@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <title>FPMonitor Test Page</title>
+<body>
+
+<p>Click the corresponding buttons to print the attributes and check console output to see the access logs.</p>
+
+<button onclick="getPlatform()">navigator.platform</button>
+<button onclick="getUserAgent()">navigator.userAgent</button>
+<button onclick="getScreenWidth()">screen.width</button>
+<p id="platform"></p>
+<p id="userAgent"></p>
+<p id="width"></p>
+
+<script>
+
+function getPlatform() {
+    var x = "navigator.platform output: " + navigator.platform;
+    document.getElementById("platform").innerHTML = x;
+}
+
+function getUserAgent() {
+    var x = "navigator.userAgent output: " + navigator.userAgent;
+    document.getElementById("userAgent").innerHTML = x;
+}
+
+function getScreenWidth() {
+    var x = "screen.width output: " + screen.width;
+    document.getElementById("width").innerHTML = x;
+}
+</script>
+
+</body>
+</html>
+
