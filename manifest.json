@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+
+  "name": "FPMonitor",
+  "description": "This extension allows the user to monitor access to the browser attributes used for fingerprinting.",
+  "version": "1.0",
+  "author": "Vikas Mishra",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": ["script.js"],
+  "content_scripts": [
+      {
+      "matches": [
+      "http://*/*",
+      "https://*/*",
+      "file://*/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+      }
+  ]
+}
+
