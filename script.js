@@ -6,6 +6,7 @@
 var navigatorGetter = navigator.__lookupGetter__("platform").bind(navigator);
 var originalUserAgentGetter = navigator.__lookupGetter__("userAgent").bind(navigator);
 var originalScreenWidthGetter = screen.__lookupGetter__("width").bind(screen);
+var origialStorageGetter = navigator.__lookupGetter__("storage").bind(navigator);
 
 //This section defines fakeGetter functions
 var fakePlatformGetter = function () {
@@ -23,6 +24,11 @@ var fakeScreenWidthGetter = function () {
     return originalScreenWidthGetter();
 };
 
+var fakeStorageGetter = function () {
+    console.log("Accessing Storage");
+    return origialStorageGetter();
+}
+
 //This section resets the getters to fakeGetters
 Object.defineProperty(navigator, "platform", {
     get: fakePlatformGetter
@@ -34,5 +40,9 @@ Object.defineProperty(navigator, "userAgent", {
 
 Object.defineProperty(screen, "width", {
     get: fakeScreenWidthGetter
+});
+
+Object.defineProperty(navigator, "storage", {
+    get: fakeStorageGetter
 });
 

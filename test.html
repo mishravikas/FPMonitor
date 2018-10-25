@@ -8,9 +8,11 @@
 <button onclick="getPlatform()">navigator.platform</button>
 <button onclick="getUserAgent()">navigator.userAgent</button>
 <button onclick="getScreenWidth()">screen.width</button>
+<button onclick="getStorageQuota()">navigator.storage</button>
 <p id="platform"></p>
 <p id="userAgent"></p>
 <p id="width"></p>
+<p id="storage"></p>
 
 <script>
 
@@ -27,6 +29,14 @@ function getUserAgent() {
 function getScreenWidth() {
     var x = "screen.width output: " + screen.width;
     document.getElementById("width").innerHTML = x;
+}
+
+function getStorageQuota() {
+	if ('storage' in navigator && 'estimate' in navigator.storage) {
+		navigator.storage.estimate().then(({usage, quota}) => {
+			document.getElementById("storage").innerHTML = quota;
+		});
+	}
 }
 </script>
 
